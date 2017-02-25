@@ -1,0 +1,77 @@
+<html>
+<head>
+    <title>
+
+    </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css.map">
+    <style type="text/css">
+        body{
+            background-color: #D5EBF2;
+            padding-top: 40px;
+    }
+        h1{
+            text-align: center;
+        }
+        hr{
+            border: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="root" class="container">
+    <h1><b><u>NOTES</u></b></h1>
+    <hr>
+    <hr>
+    <br>
+ <ol type="1">
+
+     <li v-for="note in notes" v-text="note"><p class="bg-primary"></p></li>
+ </ol>
+    <article class="message is-info">
+        <div class="message-header">
+            <p>Info</p>
+            <button class="delete"></button>
+        </div>
+        <div class="message-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+    </article>
+
+    <input type="text" size="100" placeholder="Add your note......." v-model="newnote">
+
+    <button type="button" class="btn btn-primary" @click="addnote">Add NOTE</button>
+</div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<script>
+
+    var app = new Vue({
+       el : '#root',
+    data :{
+           
+           notes : ['note1','note2']
+
+    },
+
+        methods: {
+
+           addnote : function() {
+               this.notes.push(this.newnote);
+
+               this.newnote='';
+           }
+       }
+
+
+   })
+
+
+
+</script>
+</body>
+</html>
