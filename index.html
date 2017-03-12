@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style type="text/css">
         body{
-            background-color: #EBF382;
-            padding-top: 40px;
+            border: 10px dotted black;
+            padding:35px;
+            background: #F5FE78;
+            background-clip: content-box;
     }
         h1{
             text-align: center;
@@ -32,7 +34,7 @@
     <hr>
     <br>
 
-    <input type="text" v-model="newnote" size="158" placeholder="Add your note......." @keyup.enter="addnote" >
+    <input type="text" autofocus class="text-input" v-model="newnote" size="158" placeholder="Add your note......." @keyup.enter="addnote" >
     <br>
     <br>
 
@@ -41,7 +43,8 @@
      <li id="input" class="list-group-item"
          v-text="(notes, index) in notes">
      </li>
- </deletenote></ul>
+ </deletenote>
+     </ul>
 
 
 </div>

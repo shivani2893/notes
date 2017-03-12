@@ -6,7 +6,8 @@ Vue.component('deletenote', {
         return{
 
             title: 'notes',
-            isvisible: true
+            isvisible: true,
+            activeEdit: null
         }
 
     },
@@ -17,7 +18,10 @@ Vue.component('deletenote', {
         '<span>\
       <li class="list-group-item" v-show="isvisible">\
           {{ title }}\
-          <button type="button" @click="isvisible= false">X</button>\
+          <div class="btn-group" role="group" aria-label="...">\
+          <button type="button" class="btn btn-default" @click="editNote(note)">EDIT</button>\
+          <input type="text" v-model="note.text" @blur="doneEdit(note)" v-show="note == activeEdit">\
+        <button type="button" class="btn btn-default" @click="isvisible= false">DELETE</button>\
       </li>\</span>'
   });
 
@@ -33,7 +37,6 @@ new Vue ({
             'Submit assignment.'
         ]
 
-
     },
 
 
@@ -41,13 +44,23 @@ new Vue ({
 
         addnote: function () {
             //function adds new notes to the list
+            let note = this.newnote.trim();
             this.notes.push(this.newnote);
 
             this.newnote = '';
+        },
+
+        editNote(note) {
+            this.activeEdit = note;
+        },
+
+        doneEdit(note) {
+            if (!this.activeEdit) {
+                return
+            }
+            this.activeEdit = null;
+            note.text = note.text.trim();
         }
 
-        }
-
-
-
+    }
 });
