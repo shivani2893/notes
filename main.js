@@ -20,7 +20,7 @@ Vue.component('deletenote', {
           {{ title }}\
           <div class="btn-group" role="group" aria-label="...">\
           <button type="button" class="btn btn-default" @click="editNote(note)">EDIT</button>\
-          <input type="text" v-model="note.text" @blur="doneEdit(note)" v-show="note == activeEdit">\
+          <input type="text" v-model="note" @blur="doneEdit(note)" v-show="note == activeEdit">\
         <button type="button" class="btn btn-default" @click="isvisible= false">DELETE</button>\
       </li>\</span>'
   });
